@@ -1,0 +1,33 @@
+<div class="container mt-4">
+  <h2>Patient Dashboard</h2>
+  <h4>📅 Upcoming Appointments</h4>
+
+  <div class="card mb-3" *ngFor="let appointment of appointments">
+    <div class="card-body">
+      <h5 class="card-title">Appointment #{{ appointment.id }}</h5>
+
+      <p class="card-text">
+        <strong>Doctor:</strong> {{ getDoctorName(appointment.doctorId) }}<br>
+        <strong>Specialization:</strong> {{ getDoctorSpecialization(appointment.doctorId) }}<br>
+        <strong>Date:</strong> {{ appointment.date | date:'fullDate' }}<br>
+        <strong>Time:</strong> {{ appointment.time }}<br>
+        <strong>Reason:</strong> {{ appointment.reason }}
+      </p>
+
+      <span class="badge" [ngClass]="getStatusClass(appointment.status)">
+        Status: {{ appointment.status | uppercase }}
+      </span>
+    </div>
+  </div>
+
+  <div *ngIf="appointments.length === 0" class="alert alert-info">
+    No appointments booked yet.
+  </div>
+</div>
+
+   
+      
+  
+    
+
+

@@ -1,0 +1,72 @@
+<div class="container mt-4">
+  <h2>👨‍⚕️ Doctor Dashboard</h2>
+  
+  <h4>Appointment Requests</h4>
+  
+  <div class="card mb-3" *ngFor="let appointment of appointments">
+    <div class="card-body">
+      <h5 class="card-title">Appointment #{{appointment.id}}</h5>
+      
+      <div class="row">
+        <!-- Patient Information -->
+        <div class="col-md-6">
+          <h6>👤 Patient Details</h6>
+          <p class="card-text">
+            <strong>Name:</strong> {{appointment.patientName}}<br>
+<strong>Phone:</strong> {{appointment.patientPhone}}<br>
+<strong>Email:</strong> {{appointment.patientEmail}}<br>
+<strong>City:</strong> {{appointment.patientCity}}<br>
+<strong>Address:</strong> {{appointment.patientAddress}}<br>
+<strong>Gender:</strong> {{appointment.patientGender}}<br>
+<strong>Appointment Date:</strong> {{appointment.date | date:'fullDate'}}<br>
+<strong>Time:</strong> {{appointment.time}}
+          </p>
+        </div>
+        
+        <!-- Appointment Details -->
+        <div class="col-md-6">
+          <h6>📋 Appointment Details</h6>
+          <p class="card-text">
+            <strong>Reason for Visit:</strong><br>
+            {{appointment.reason}}
+          </p>
+        </div>
+      </div>
+      
+      <!-- Status and Actions -->
+      <div class="mt-3">
+        <span class="badge" [ngClass]="getStatusClass(appointment.status)">
+          Status: {{appointment.status | uppercase}}
+        </span>
+        
+        <div class="mt-2" *ngIf="appointment.status === 'pending'">
+          <button class="btn btn-success btn-sm me-2" 
+                  (click)="updateAppointmentStatus(appointment.id, 'confirmed')">
+            <i class="fas fa-check me-1"></i>
+            Confirm Appointment
+          </button>
+          <button class="btn btn-danger btn-sm" 
+                  (click)="updateAppointmentStatus(appointment.id, 'cancelled')">
+            <i class="fas fa-times me-1"></i>
+            Cancel Appointment
+          </button>
+        </div>
+        
+        <div class="mt-2" *ngIf="appointment.status === 'confirmed'">
+          <span class="text-success">
+            <i class="fas fa-check-circle me-1"></i>
+            This appointment has been confirmed
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="appointments.length === 0" class="alert alert-info">
+    <i class="fas fa-info-circle me-2"></i>
+    No appointment requests at the moment.
+  </div>
+</div>
+
+
+

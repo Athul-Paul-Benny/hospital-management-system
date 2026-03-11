@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">Hospital Management System</a>
+    
+    <div class="navbar-nav">
+      <a class="nav-link" 
+         *ngFor="let item of menuItems" 
+         [routerLink]="item.path" 
+         routerLinkActive="active">
+        {{item.label}}
+      </a>
+    </div>
+  </div>
+</nav>
+
+

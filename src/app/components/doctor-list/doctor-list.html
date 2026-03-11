@@ -1,0 +1,23 @@
+<div class="container mt-4">
+  <h2>Our Medical Team</h2>
+  
+  <div class="row">
+    <div class="col-md-6 mb-3" *ngFor="let doctor of doctors">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{doctor.name}}</h5>
+          <p class="card-text">
+            <strong>Specialization:</strong> {{doctor.specialization}}<br>
+            <strong>Email:</strong> {{doctor.email}}<br>
+            <strong>Phone:</strong> {{doctor.phone}}
+          </p>
+          <span class="badge" 
+                [ngClass]="doctor.isAvailable ? 'bg-success' : 'bg-danger'">
+            {{doctor.isAvailable ? 'Available' : 'Not Available'}}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

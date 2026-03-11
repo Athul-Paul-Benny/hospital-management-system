@@ -1,0 +1,33 @@
+form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.alert {
+  max-width: 600px;
+  margin: 20px auto;
+}
+.card {
+  border-left: 4px solid #007bff;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #495057;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  border: none;
+  padding: 10px 30px;
+}
+
+.alert {
+  border-radius: 10px;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
